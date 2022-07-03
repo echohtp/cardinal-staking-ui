@@ -624,7 +624,7 @@ function Home() {
                 )}
               </>
             ) : (
-              <div className="relative flex h-8 flex-grow items-center justify-center">
+              <div className="relative flex items-center justify-center flex-grow h-8">
                 <span
                   className={`${
                     stakePoolMetadata?.colors?.fontColor
@@ -634,7 +634,7 @@ function Home() {
                 >
                   Loading pool info...
                 </span>
-                <div className="absolute w-full animate-pulse items-center justify-center rounded-lg bg-white bg-opacity-10 p-5"></div>
+                <div className="absolute items-center justify-center w-full p-5 bg-white rounded-lg animate-pulse bg-opacity-10"></div>
               </div>
             )}
             {rewardDistributorData.data && rewardMintInfo.data ? (
@@ -700,9 +700,9 @@ function Home() {
                 </div>
                 <div className="flex min-w-[200px] flex-col text-lg">
                   {!rewardMintInfo.isFetched || !rewards.data ? (
-                    <div className="relative flex h-10 w-full items-center justify-center">
+                    <div className="relative flex items-center justify-center w-full h-10">
                       <span className="text-gray-500"></span>
-                      <div className="absolute w-full animate-pulse items-center justify-center rounded-lg bg-white bg-opacity-10 p-5"></div>
+                      <div className="absolute items-center justify-center w-full p-5 bg-white rounded-lg animate-pulse bg-opacity-10"></div>
                     </div>
                   ) : (
                     rewards.data && (
@@ -741,7 +741,7 @@ function Home() {
                 </div>
               </>
             ) : (
-              <div className="relative flex flex-grow items-center justify-center">
+              <div className="relative flex items-center justify-center flex-grow">
                 {!(
                   rewardDistributorData.isFetched && rewardMintInfo.isFetched
                 ) && (
@@ -755,14 +755,14 @@ function Home() {
                     >
                       Loading rewards...
                     </span>
-                    <div className="absolute w-full animate-pulse items-center justify-center rounded-lg bg-white bg-opacity-10 p-5"></div>
+                    <div className="absolute items-center justify-center w-full p-5 bg-white rounded-lg animate-pulse bg-opacity-10"></div>
                   </>
                 )}
               </div>
             )}
           </div>
         )}
-        <div className="my-2 mx-5 grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-4 mx-5 my-2 md:grid-cols-2">
           <div
             className={`flex-col rounded-md p-10 ${
               stakePoolMetadata?.colors?.fontColor
@@ -780,9 +780,9 @@ function Home() {
                 : '',
             }}
           >
-            <div className="mt-2 flex w-full flex-row justify-between">
+            <div className="flex flex-row justify-between w-full mt-2">
               <div className="flex flex-row">
-                <p className="mb-3 mr-3 inline-block text-lg">
+                <p className="inline-block mb-3 mr-3 text-lg">
                   Select Your Tokens
                 </p>
                 <div className="inline-block">
@@ -803,7 +803,7 @@ function Home() {
                 {!stakePoolMetadata?.hideAllowedTokens && (
                   <button
                     onClick={() => setShowAllowedTokens(!showAllowedTokens)}
-                    className="text-md mr-5 inline-block rounded-md bg-white bg-opacity-5 px-4 py-1 hover:bg-opacity-10 focus:outline-none"
+                    className="inline-block px-4 py-1 mr-5 bg-white rounded-md text-md bg-opacity-5 hover:bg-opacity-10 focus:outline-none"
                   >
                     {showAllowedTokens ? 'Hide' : 'Show'} Allowed Tokens
                   </button>
@@ -813,7 +813,7 @@ function Home() {
                     onClick={() => {
                       setShowFungibleTokens(!showFungibleTokens)
                     }}
-                    className="text-md inline-block rounded-md bg-white bg-opacity-5 px-4 py-1 hover:bg-opacity-10"
+                    className="inline-block px-4 py-1 bg-white rounded-md text-md bg-opacity-5 hover:bg-opacity-10"
                   >
                     {showFungibleTokens ? 'Show NFTs' : 'Show FTs'}
                   </button>
@@ -823,7 +823,7 @@ function Home() {
             {showAllowedTokens && (
               <AllowedTokens stakePool={stakePool}></AllowedTokens>
             )}
-            <div className="my-3 flex-auto overflow-auto">
+            <div className="flex-auto my-3 overflow-auto">
               <div
                 className="relative my-auto mb-4 h-[60vh] overflow-y-auto overflow-x-hidden rounded-md bg-white bg-opacity-5 p-5"
                 style={{
@@ -892,8 +892,8 @@ function Home() {
                                   singleTokenAction ===
                                     tk.tokenAccount?.account.data.parsed.info.mint.toString()) && (
                                   <div>
-                                    <div className="absolute top-0 left-0 z-10 flex h-full w-full justify-center rounded-xl bg-black bg-opacity-80 align-middle text-white">
-                                      <div className="my-auto flex">
+                                    <div className="absolute top-0 left-0 z-10 flex justify-center w-full h-full text-white align-middle bg-black rounded-xl bg-opacity-80">
+                                      <div className="flex my-auto">
                                         <span className="mr-2">
                                           <LoadingSpinner height="20px" />
                                         </span>
@@ -916,7 +916,7 @@ function Home() {
                                 selectStakedToken={selectStakedToken}
                               />
                               <img
-                                className="mx-auto mt-4 rounded-t-xl bg-white bg-opacity-5 object-contain md:h-40 md:w-40 2xl:h-48 2xl:w-48"
+                                className="object-contain mx-auto mt-4 bg-white rounded-t-xl bg-opacity-5 md:h-40 md:w-40 2xl:h-48 2xl:w-48"
                                 src={
                                   tk.metadata?.data.image ||
                                   tk.tokenListData?.logoURI
@@ -942,14 +942,14 @@ function Home() {
                                       ?.backgroundSecondary,
                                 }}
                               >
-                                <div className="truncate font-semibold">
+                                <div className="font-semibold truncate">
                                   {tk.metadata?.data.name ||
                                     tk.tokenListData?.symbol}
                                 </div>
                                 {showFungibleTokens && rewardMintInfo.data && (
                                   <div className="mt-2">
-                                    <div className="truncate font-semibold">
-                                      <div className="flex w-full flex-row justify-between text-xs font-semibold">
+                                    <div className="font-semibold truncate">
+                                      <div className="flex flex-row justify-between w-full text-xs font-semibold">
                                         <span>Available:</span>
                                         <span className="px-1">
                                           {formatAmountAsDecimal(
@@ -963,10 +963,10 @@ function Home() {
                                         </span>
                                       </div>
                                     </div>
-                                    <div className="flex w-full flex-row justify-between text-xs font-semibold">
+                                    <div className="flex flex-row justify-between w-full text-xs font-semibold">
                                       <span>Amount:</span>
                                       <input
-                                        className="flex w-3/4 rounded-md bg-transparent px-1 text-right text-xs font-medium focus:outline-none"
+                                        className="flex w-3/4 px-1 text-xs font-medium text-right bg-transparent rounded-md focus:outline-none"
                                         type="text"
                                         placeholder={'Enter Amount'}
                                         onChange={(e) => {
@@ -1003,7 +1003,7 @@ function Home() {
               </div>
             </div>
 
-            <div className="mt-2 flex items-center justify-between">
+            <div className="flex items-center justify-between mt-2">
               {!stakePoolMetadata?.receiptType && !showFungibleTokens ? (
                 <MouseoverTooltip
                   title={
@@ -1012,7 +1012,7 @@ function Home() {
                       : 'Receive a dynamically generated NFT receipt representing your stake'
                   }
                 >
-                  <div className="flex cursor-pointer flex-row gap-2">
+                  <div className="flex flex-row gap-2 cursor-pointer">
                     <Switch
                       checked={receiptType === ReceiptType.Original}
                       onChange={() =>
@@ -1078,7 +1078,7 @@ function Home() {
                   }}
                   className="my-auto flex rounded-md px-4 py-2 hover:scale-[1.03]"
                 >
-                  <span className="mr-1 inline-block">
+                  <span className="inline-block mr-1">
                     {loadingStake && (
                       <LoadingSpinner
                         fill={
@@ -1108,8 +1108,8 @@ function Home() {
                 : '',
             }}
           >
-            <div className="mb-5 flex flex-row justify-between">
-              <div className="mt-2 flex flex-row">
+            <div className="flex flex-row justify-between mb-5">
+              <div className="flex flex-row mt-2">
                 <p className="mr-3 text-lg">
                   View Staked Tokens{' '}
                   {stakedTokenDatas.isFetched &&
@@ -1168,7 +1168,7 @@ function Home() {
                 )}
               </div>
             </div>
-            <div className="my-3 flex-auto overflow-auto">
+            <div className="flex-auto my-3 overflow-auto">
               <div
                 className="relative my-auto mb-4 h-[60vh] overflow-y-auto overflow-x-hidden rounded-md bg-white bg-opacity-5 p-5"
                 style={{
@@ -1235,8 +1235,8 @@ function Home() {
                                     singleTokenAction ===
                                       tk.stakeEntry?.parsed.originalMint.toString()) && (
                                     <div>
-                                      <div className="absolute top-0 left-0 z-10 flex h-full w-full justify-center rounded-lg bg-black bg-opacity-80 align-middle text-white">
-                                        <div className="mx-auto flex items-center justify-center">
+                                      <div className="absolute top-0 left-0 z-10 flex justify-center w-full h-full text-white align-middle bg-black rounded-lg bg-opacity-80">
+                                        <div className="flex items-center justify-center mx-auto">
                                           <span className="mr-2">
                                             <LoadingSpinner height="20px" />
                                           </span>
@@ -1250,8 +1250,8 @@ function Home() {
                                 {tk.stakeEntry?.parsed.lastStaker.toString() !==
                                   wallet.publicKey?.toString() && (
                                   <div>
-                                    <div className="absolute top-0 left-0 z-10 flex h-full w-full justify-center rounded-xl bg-black bg-opacity-80  align-middle text-white">
-                                      <div className="mx-auto flex flex-col items-center justify-center">
+                                    <div className="absolute top-0 left-0 z-10 flex justify-center w-full h-full text-white align-middle bg-black rounded-xl bg-opacity-80">
+                                      <div className="flex flex-col items-center justify-center mx-auto">
                                         <div>Owned by</div>
                                         <DisplayAddress
                                           dark
@@ -1280,7 +1280,7 @@ function Home() {
                                   selectStakedToken={selectStakedToken}
                                 />
                                 <img
-                                  className="mx-auto mt-4 rounded-t-xl bg-white bg-opacity-5 object-contain md:h-40 md:w-40 2xl:h-48 2xl:w-48"
+                                  className="object-contain mx-auto mt-4 bg-white rounded-t-xl bg-opacity-5 md:h-40 md:w-40 2xl:h-48 2xl:w-48"
                                   src={
                                     tk.metadata?.data.image ||
                                     tk.tokenListData?.logoURI
@@ -1307,7 +1307,7 @@ function Home() {
                                         ?.backgroundSecondary,
                                   }}
                                 >
-                                  <div className="truncate font-semibold">
+                                  <div className="font-semibold truncate">
                                     {tk.metadata?.data.name ||
                                       tk.tokenListData?.symbol}
                                   </div>
@@ -1316,7 +1316,7 @@ function Home() {
                                       tk.stakeEntry.parsed.amount.toNumber() >
                                         1 &&
                                       rewardMintInfo.data && (
-                                        <div className="flex w-full flex-row justify-between text-xs font-semibold">
+                                        <div className="flex flex-row justify-between w-full text-xs font-semibold">
                                           <span>Amount:</span>
                                           <span>
                                             {formatAmountAsDecimal(
@@ -1331,7 +1331,7 @@ function Home() {
                                         </div>
                                       )}
                                     {tk.stakeEntry?.pubkey && (
-                                      <div className="flex w-full flex-row justify-between text-xs font-semibold">
+                                      <div className="flex flex-row justify-between w-full text-xs font-semibold">
                                         <span>Boost:</span>
                                         <span>
                                           {rewardDistributorData.data?.parsed
@@ -1360,7 +1360,7 @@ function Home() {
                                     {rewardDistributorData.data && (
                                       <>
                                         {tk.stakeEntry && rewardMintInfo.data && (
-                                          <div className="flex w-full flex-row justify-between text-xs font-semibold">
+                                          <div className="flex flex-row justify-between w-full text-xs font-semibold">
                                             <span>Daily:</span>
                                             <span>
                                               {formatAmountAsDecimal(
@@ -1419,7 +1419,7 @@ function Home() {
                                           </div>
                                         )}
                                         {tk.stakeEntry && rewardMintInfo.data && (
-                                          <div className="flex w-full flex-row justify-between text-xs font-semibold">
+                                          <div className="flex flex-row justify-between w-full text-xs font-semibold">
                                             <span>Claim:</span>
                                             <span>
                                               {formatMintNaturalAmountAsDecimal(
@@ -1446,7 +1446,7 @@ function Home() {
                                           rewardDistributorData.data?.parsed.rewardDurationSeconds.gte(
                                             new BN(60)
                                           ) && (
-                                            <div className="flex w-full flex-row justify-between text-xs font-semibold">
+                                            <div className="flex flex-row justify-between w-full text-xs font-semibold">
                                               <span>Next rewards:</span>
                                               <span>
                                                 {secondstoDuration(
@@ -1464,7 +1464,7 @@ function Home() {
                                     {tk.stakeEntry?.parsed
                                       .cooldownStartSeconds &&
                                     stakePool?.parsed.cooldownSeconds ? (
-                                      <div className="flex w-full flex-row justify-between text-xs font-semibold">
+                                      <div className="flex flex-row justify-between w-full text-xs font-semibold">
                                         <span>Cooldown:</span>
                                         {tk.stakeEntry?.parsed.cooldownStartSeconds.toNumber() +
                                           stakePool.parsed.cooldownSeconds -
@@ -1483,7 +1483,7 @@ function Home() {
                                     )}
                                     {stakePool?.parsed.minStakeSeconds &&
                                     tk.stakeEntry?.parsed.lastStakedAt ? (
-                                      <div className="flex w-full flex-row justify-between text-xs font-semibold">
+                                      <div className="flex flex-row justify-between w-full text-xs font-semibold">
                                         <span>Min Time:</span>
                                         {tk.stakeEntry?.parsed.lastStakedAt.toNumber() +
                                           stakePool.parsed.minStakeSeconds -
@@ -1537,7 +1537,7 @@ function Home() {
                 )}
               </div>
             </div>
-            <div className="mt-2 flex flex-row-reverse">
+            <div className="flex flex-row-reverse mt-2">
               <MouseoverTooltip
                 title={'Unstake will automatically claim reward for you.'}
               >
@@ -1562,7 +1562,7 @@ function Home() {
                   }}
                   className="my-auto flex rounded-md px-4 py-2 hover:scale-[1.03]"
                 >
-                  <span className="mr-1 inline-block">
+                  <span className="inline-block mr-1">
                     {loadingUnstake ? (
                       <LoadingSpinner
                         fill={
@@ -1605,7 +1605,7 @@ function Home() {
                   }}
                   className="my-auto mr-5 flex rounded-md px-4 py-2 hover:scale-[1.03]"
                 >
-                  <span className="mr-1 inline-block">
+                  <span className="inline-block mr-1">
                     {loadingClaimRewards && (
                       <LoadingSpinner
                         fill={

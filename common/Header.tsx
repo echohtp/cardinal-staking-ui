@@ -40,7 +40,7 @@ export const Header = () => {
     <div>
       {clockDrift && (
         <div
-          className="flex w-full items-center justify-center rounded-md py-2 text-center"
+          className="flex items-center justify-center w-full py-2 text-center rounded-md"
           style={{
             color: stakePoolMetadata?.colors?.secondary,
             background: lighten(
@@ -77,7 +77,7 @@ export const Header = () => {
                   : ''
               }`
             }
-            className="flex cursor-pointer text-xl font-semibold text-white hover:text-gray-400"
+            className="flex text-xl font-semibold text-white cursor-pointer hover:text-gray-400"
           >
             {stakePoolMetadata?.imageUrl ? (
               <div className="flex flex-row">
@@ -85,7 +85,7 @@ export const Header = () => {
                   className="flex h-[35px] flex-col"
                   src={stakePoolMetadata?.imageUrl}
                 />
-                {/* <span className="ml-5 mt-1 flex flex-col">
+                {/* <span className="flex flex-col mt-1 ml-5">
                   {stakePoolMetadata?.displayName} Staking
                 </span> */}
               </div>
@@ -114,7 +114,7 @@ export const Header = () => {
             ''
           )}
         </div>
-        <div className="relative my-auto flex items-center align-middle">
+        <div className="relative flex items-center my-auto align-middle">
           {stakePoolId && stakePoolMetadata ? (
             stakePoolMetadata.links?.map((link) => (
               <a key={link.value} href={link.value}>
@@ -125,7 +125,7 @@ export const Header = () => {
             ))
           ) : (
             <>
-              <div
+              {/* <div
                 onClick={() =>
                   router.push(
                     `/admin${
@@ -137,7 +137,7 @@ export const Header = () => {
                 }
               >
                 <p className="my-auto mr-10 hover:cursor-pointer">Admin</p>
-              </div>
+              </div> */}
             </>
           )}
           {wallet.connected && wallet.publicKey ? (
