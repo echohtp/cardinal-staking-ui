@@ -94,7 +94,7 @@ export const Header = () => {
                 {stakePoolMetadata?.displayName || (
                   <img
                     className="inline-block w-4"
-                    src={'/cardinal-crosshair.svg'}
+                    src={'/favicon.ico'}
                   />
                 )}{' '}
                 Staking
