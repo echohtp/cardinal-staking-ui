@@ -54,6 +54,7 @@ import { useRouter } from 'next/router'
 import { lighten, darken } from '@mui/material'
 import { QuickActions } from 'common/QuickActions'
 import * as splToken from '@solana/spl-token'
+import * as ga from '../../lib/ga'
 
 function Home() {
   const router = useRouter()
@@ -230,6 +231,10 @@ function Home() {
     setStakedSelected([])
     setUnstakedSelected([])
     setLoadingUnstake(false)
+    ga.event({
+      action: 'unstake_success',
+      params: { count: stakedSelected.length }
+    })
   }
 
   async function handleStake() {
@@ -388,6 +393,10 @@ function Home() {
     setStakedSelected([])
     setUnstakedSelected([])
     setLoadingStake(false)
+    ga.event({
+      action: 'stake_success',
+      params: { count: unstakedSelected.length }
+    })
   }
 
   const selectUnstakedToken = (tk: AllowedTokenData, targetValue?: string) => {
